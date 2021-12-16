@@ -50,6 +50,7 @@ public slots:
     void travel(unsigned int KidId, unsigned int step2, unsigned int ms);
     void goToPlayground(unsigned int KidId, unsigned int ms);
     void finishedAnimation();
+    void startSanta();
 };
 
 #endif // DISPLAY_H

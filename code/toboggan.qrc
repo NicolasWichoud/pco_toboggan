@@ -1,5 +1,6 @@
 <RCC>
     <qresource prefix="/">
+        <file>images/traineau.jpg</file>
         <file>images/32x32/p0.png</file>
         <file>images/32x32/p1.png</file>
         <file>images/32x32/p2.png</file>
