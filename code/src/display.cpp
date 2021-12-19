@@ -167,7 +167,7 @@ void TobogganDisplay::goToPlayground(unsigned int kidId, unsigned int ms)
         auto animation = new QPropertyAnimation(kid, "pos");
         animation->setDuration(static_cast<int>(ms)-10);
         if (step1 >= m_stepPos.size()) {
-//            throw std::runtime_error("Internal error");
+            //throw std::runtime_error("Internal error");
         }
         animation->setStartValue(m_stepPos[step1]);
 

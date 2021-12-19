@@ -8,7 +8,7 @@
 #include "kid.h"
 
 
-constexpr int NBSTEPS = 4;
+constexpr int NBSTEPS = 6;
 constexpr int NBKIDS = 15;
 
 int main(int argc, char *argv[])
@@ -17,7 +17,7 @@ int main(int argc, char *argv[])
     QCommandLineParser parser;
     QCommandLineOption stepNumber(QStringList() << "s" << "steps",
                                   QCoreApplication::translate("main",
-                                       "Number or steps on toboggan, "
+                                                              "Number or steps on toboggan, "
                                        "the slider is considered as a step, minimum 2"),
                                   QCoreApplication::translate("main", "steps"));
 
@@ -33,8 +33,8 @@ int main(int argc, char *argv[])
     int nbSteps = parser.value(stepNumber).toInt();
     int nbKids = parser.value(kidNumber).toInt();
 
-     std::cout << "Number of steps from cmd line: " << nbSteps << std::endl;
-     std::cout << "Number of kids from cmd line: " << nbKids << std::endl;
+    std::cout << "Number of steps from cmd line: " << nbSteps << std::endl;
+    std::cout << "Number of kids from cmd line: " << nbKids << std::endl;
 
     if (nbKids < 1) {
         nbKids = NBKIDS;
@@ -48,18 +48,18 @@ int main(int argc, char *argv[])
                      " Using default value:"<< nbSteps << std::endl;
     }
 
-     /* Max number not checked */
+    /* Max number not checked */
 
 
     // Initialisation de la partie graphique de l'application
-    PSlideInterface::initialize(nbKids,nbSteps, nbKids);
+    PSlideInterface::initialize(nbKids, nbSteps, nbKids);
     // Création de l'interface pour les commandes à la partie graphique
     auto gui_interface = new PSlideInterface();
 
-   // Création de steps
+    // Création de steps
     std::vector<Place*> places(nbSteps + 1);
 
-    for (int s=0; s < nbSteps + 1; s++) {
+    for (int s = 0; s < nbSteps + 1; s++) {
         // Les steps pairs accueillent une personne et les
         // steps impairs en accueillent deux
         places[s] = new Place((s % 2) + 1);
