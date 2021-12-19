@@ -8,8 +8,8 @@
 #include "kid.h"
 
 
-constexpr int NBSTEPS = 8;
-constexpr int NBKIDS = 8;
+constexpr int NBSTEPS = 20;
+constexpr int NBKIDS = 16;
 
 int main(int argc, char *argv[])
 {

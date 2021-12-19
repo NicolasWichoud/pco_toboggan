@@ -32,11 +32,11 @@ public:
             PcoHoareMonitor::wait(cond);
         }else{
             // Les enfants partent au toboggan
-            for( unsigned i = 0; i <= threshold / 2; ++i){
-                --nbPlaying;
+            for( unsigned i = 1; i < threshold / 2; ++i){
                 PcoHoareMonitor::signal(cond);
             }
         }
+        --nbPlaying;
         monitorOut();
     }
 
