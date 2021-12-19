@@ -6,6 +6,7 @@
   Fichier faisant partie du labo toboggan.
   ****************************************************************************/
 
+#include <QAction>
 
 #include "mainwindow.h"
 
@@ -35,6 +36,17 @@ MainWindow::MainWindow(unsigned int nbConsoles,unsigned int nbStep, unsigned int
         setConsoleTitle(i,QString("Console number : %1").arg(i));
     m_display=new TobogganDisplay(nbStep, nbKids, this);
     setCentralWidget(m_display);
+
+
+    QAction *santaAct = new QAction(this);
+    santaAct->setShortcut(QKeySequence("Ctrl+S"));
+    connect(santaAct, &QAction::triggered, m_display, &TobogganDisplay::startSanta);
+    addAction(santaAct);
+
+//    fileMenu->addAction(openAct);
+//    fileToolBar->addAction(openAct);
+
+
 }
 
 

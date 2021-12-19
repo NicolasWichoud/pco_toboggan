@@ -203,3 +203,32 @@ void TobogganDisplay::finishedAnimation()
 }
 
 
+void TobogganDisplay::startSanta()
+{
+    QPixmap img(QString(":images/traineau.jpg"));
+    QPixmap kidPixmap;
+    kidPixmap=img.scaledToWidth(300);
+    auto traineau=new KidItem();
+    traineau->setPixmap(kidPixmap);
+    m_scene->addItem(traineau);
+    traineau->setPos(-300, -300);
+
+
+    auto group=new QParallelAnimationGroup(this);
+
+    {
+        traineau->show();
+        auto animation=new QPropertyAnimation(traineau, "pos");
+        animation->setDuration(10000);
+        animation->setStartValue(traineau->pos());
+        animation->setEndValue(QPointF(300, -600));
+        animation->setEasingCurve(QEasingCurve::InCubic);
+
+        group->addAnimation(animation);
+    }
+
+    group->start();
+}
+
+
+
