@@ -23,7 +23,7 @@ public:
     void access()
     {
         mutex.lock();
-        while(nbPeople + 1 > maxPeople){
+        if (nbPeople == maxPeople) {
             isFree.wait(&mutex);
         }
         ++nbPeople;
@@ -37,7 +37,7 @@ public:
     {
         mutex.lock();
         --nbPeople;
-        isFree.notifyAll();
+        isFree.notifyOne();
         mutex.unlock();
     }
 
