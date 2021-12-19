@@ -10,7 +10,7 @@ public:
     /// \brief Constructeur
     /// \param nbKidsToLeave Nombre d'enfants permettant de relâcher la moitié d'entre eux
     ///
-    Playground(unsigned int nbKidsToLeave): nbReady(0), threshold(nbKidsToLeave)
+    Playground(unsigned int nbKidsToLeave): nbPlaying(0), threshold(nbKidsToLeave)
     {
         // TODO
     }
@@ -26,19 +26,23 @@ public:
     {
         // TODO
         monitorIn();
-        ++nbReady;
-        if(nbReady < threshold) {
-            // Demande à un enfant d'attendre
+        ++nbPlaying;
+        if(nbPlaying < threshold) {
+            // Chaque enfant joue
             PcoHoareMonitor::wait(cond);
+        }else{
+            // Les enfants partent au toboggan
+            for( unsigned i = 0; i <= threshold / 2; ++i){
+                --nbPlaying;
+                PcoHoareMonitor::signal(cond);
+            }
         }
-        // Relâchement en cascade (tous les enfants se ruent sur le toboggan)
-        PcoHoareMonitor::signal(cond);
         monitorOut();
     }
 
 
 private:
-    unsigned int nbReady, threshold;
+    unsigned int nbPlaying, threshold;
     Condition cond;
 };
 
